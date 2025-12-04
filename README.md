@@ -1,2 +1,3 @@
-# portfolio-site
-Personal portfolio site inspired by Websity-Digital/Elan-Pharmacy-Theme Shopify skeleton theme.
+# Husain Ali – Portfolio
+
+Coming soon: personal portfolio inspired by the Elan Pharmacy Shopify skeleton theme.
