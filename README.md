@@ -174,11 +174,6 @@ Contributions are welcome! Please:
 
 MIT License - see LICENSE file for details
 
-## Credits
-
-- Inspired by [Elan Pharmacy Theme](https://github.com/Websity-Digital/Elan-Pharmacy-Theme)
-- Built by [Hussain Ali Manj](https://github.com/husainali761)
-
 ## Support
 
 For issues and questions:
