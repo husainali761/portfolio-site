@@ -1,0 +1,109 @@
+<section id="contact" class="section section-alt">
+  <div class="container contact">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+    
+    {% if section.settings.description != blank %}
+      <p>{{ section.settings.description }}</p>
+    {% endif %}
+    
+    {% if section.settings.email != blank %}
+      <p>
+        <strong>Email:</strong> 
+        <a href="mailto:{{ section.settings.email }}" aria-label="Send email to {{ section.settings.email }}">
+          {{ section.settings.email }}
+        </a>
+      </p>
+    {% endif %}
+    
+    {% if section.settings.phone != blank %}
+      <p>
+        <strong>Phone:</strong> 
+        <a href="tel:{{ section.settings.phone }}" aria-label="Call {{ section.settings.phone }}">
+          {{ section.settings.phone }}
+        </a>
+      </p>
+    {% endif %}
+    
+    {% if section.blocks.size > 0 %}
+      <div class="contact-methods">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'contact_method' %}
+              <div class="contact-item" {{ block.shopify_attributes }}>
+                <strong>{{ block.settings.label }}:</strong>
+                {% if block.settings.url != blank %}
+                  <a href="{{ block.settings.url }}" target="_blank" rel="noopener noreferrer">
+                    {{ block.settings.value }}
+                  </a>
+                {% else %}
+                  {{ block.settings.value }}
+                {% endif %}
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Contact"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Available for Shopify theme development, customizations, and performance-focused storefront work."
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email address"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone number"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "contact_method",
+      "name": "Contact method",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "LinkedIn"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "View Profile"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact"
+    }
+  ]
+}
+{% endschema %}
