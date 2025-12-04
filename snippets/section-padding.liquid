@@ -1,0 +1,43 @@
+{% comment %}
+  Applies consistent padding to sections based on settings
+  
+  Accepts:
+  - padding_top: {Number} Top padding multiplier (0-4)
+  - padding_bottom: {Number} Bottom padding multiplier (0-4)
+  
+  Usage:
+  <div style="{% render 'section-padding', padding_top: 2, padding_bottom: 2 %}">
+{% endcomment %}
+
+{% liquid
+  assign top = padding_top | default: 2
+  assign bottom = padding_bottom | default: 2
+  
+  case top
+    when 0
+      assign top_value = '0'
+    when 1
+      assign top_value = '2rem'
+    when 2
+      assign top_value = '4rem'
+    when 3
+      assign top_value = '6rem'
+    when 4
+      assign top_value = '8rem'
+  endcase
+  
+  case bottom
+    when 0
+      assign bottom_value = '0'
+    when 1
+      assign bottom_value = '2rem'
+    when 2
+      assign bottom_value = '4rem'
+    when 3
+      assign bottom_value = '6rem'
+    when 4
+      assign bottom_value = '8rem'
+  endcase
+%}
+
+padding-top: {{ top_value }}; padding-bottom: {{ bottom_value }};

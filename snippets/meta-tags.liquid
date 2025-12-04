@@ -1,0 +1,33 @@
+{% comment %}
+  Renders meta tags for SEO
+  
+  Accepts:
+  - title: {String} Page title
+  - description: {String} Page description
+  - image: {String} OG image URL
+  
+  Usage:
+  {% render 'meta-tags', title: page_title, description: page_description %}
+{% endcomment %}
+
+{% liquid
+  assign og_title = title | default: page_title
+  assign og_description = description | default: page_description | default: shop.description
+  assign og_image = image | default: shop.brand.logo | img_url: '1200x630', crop: 'center'
+  assign og_url = canonical_url | default: request.origin
+%}
+
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:url" content="{{ og_url }}">
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:type" content="website">
+<meta property="og:description" content="{{ og_description | strip_html | truncate: 200 }}">
+
+{% if og_image %}
+  <meta property="og:image" content="https:{{ og_image }}">
+  <meta property="og:image:secure_url" content="https:{{ og_image }}">
+{% endif %}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ og_title }}">
+<meta name="twitter:description" content="{{ og_description | strip_html | truncate: 200 }}">
