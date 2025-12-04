@@ -1,3 +1,5 @@
-# Husain Ali – Portfolio
+# Hussain Ali Manj – Portfolio
 
-Coming soon: personal portfolio inspired by the Elan Pharmacy Shopify skeleton theme.
+Sr Shopify Liquid Developer
+
+This repository will host my personal portfolio inspired by the Elan Pharmacy Shopify skeleton theme.
