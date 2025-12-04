@@ -1,0 +1,50 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Portfolio Theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Hussain Ali Manj",
+    "theme_documentation_url": "https://github.com/husainali761/portfolio-site",
+    "theme_support_url": "https://github.com/husainali761/portfolio-site/issues"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary color",
+        "default": "#007bff"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text color",
+        "default": "#333333"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background color",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading font",
+        "default": "assistant_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body font",
+        "default": "assistant_n4"
+      }
+    ]
+  }
+]

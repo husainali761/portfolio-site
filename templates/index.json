@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero"
+    },
+    "about": {
+      "type": "about"
+    },
+    "skills": {
+      "type": "skills"
+    },
+    "projects": {
+      "type": "projects"
+    },
+    "contact": {
+      "type": "contact"
+    }
+  },
+  "order": [
+    "hero",
+    "about",
+    "skills",
+    "projects",
+    "contact"
+  ]
+}
