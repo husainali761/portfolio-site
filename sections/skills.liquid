@@ -1,0 +1,91 @@
+<section id="skills" class="section">
+  <div class="container">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+    
+    {% if section.blocks.size > 0 %}
+      <div class="grid skills-grid">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'skill_category' %}
+              <div class="card" {{ block.shopify_attributes }}>
+                <h3>{{ block.settings.title }}</h3>
+                {% if block.settings.skills != blank %}
+                  <ul>
+                    {% assign skill_list = block.settings.skills | split: ',' %}
+                    {% for skill in skill_list %}
+                      <li>{{ skill | strip }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Skills",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Skills & Languages"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "skill_category",
+      "name": "Skill category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category title",
+          "default": "Core"
+        },
+        {
+          "type": "textarea",
+          "id": "skills",
+          "label": "Skills (comma-separated)",
+          "default": "Shopify Liquid, HTML5, CSS3, JavaScript",
+          "info": "Enter skills separated by commas"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Skills",
+      "blocks": [
+        {
+          "type": "skill_category",
+          "settings": {
+            "title": "Core",
+            "skills": "Shopify Liquid, HTML5, CSS3, JavaScript, JSON"
+          }
+        },
+        {
+          "type": "skill_category",
+          "settings": {
+            "title": "Shopify",
+            "skills": "Theme architecture, Online Store 2.0, Metafields, Dynamic sources"
+          }
+        },
+        {
+          "type": "skill_category",
+          "settings": {
+            "title": "Workflow",
+            "skills": "Git version control, Performance optimization, SEO best practices"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
