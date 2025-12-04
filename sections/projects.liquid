@@ -1,0 +1,123 @@
+<section id="projects" class="section">
+  <div class="container">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+    
+    {% if section.blocks.size > 0 %}
+      <div class="grid project-grid">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'project' %}
+              <article class="card" {{ block.shopify_attributes }}>
+                {% if block.settings.image != blank %}
+                  <div class="project-image">
+                    <img 
+                      src="{{ block.settings.image | img_url: '600x' }}" 
+                      alt="{{ block.settings.title }}"
+                      loading="lazy"
+                      width="600"
+                      height="auto"
+                    />
+                  </div>
+                {% endif %}
+                
+                <h3>{{ block.settings.title }}</h3>
+                
+                {% if block.settings.description != blank %}
+                  <p>{{ block.settings.description }}</p>
+                {% endif %}
+                
+                {% if block.settings.tech_stack != blank %}
+                  <p class="meta">Stack: {{ block.settings.tech_stack }}</p>
+                {% endif %}
+                
+                {% if block.settings.project_url != blank %}
+                  <a href="{{ block.settings.project_url }}" 
+                     class="project-link"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     aria-label="View {{ block.settings.title }} project">
+                    View Project
+                  </a>
+                {% endif %}
+              </article>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Projects",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Selected Work"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "project",
+      "name": "Project",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Project title",
+          "default": "Project Name"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Project description",
+          "default": "A brief description of the project and its key features."
+        },
+        {
+          "type": "text",
+          "id": "tech_stack",
+          "label": "Tech stack",
+          "default": "Shopify Liquid, HTML, CSS, JavaScript"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Project image"
+        },
+        {
+          "type": "url",
+          "id": "project_url",
+          "label": "Project URL (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Projects",
+      "blocks": [
+        {
+          "type": "project",
+          "settings": {
+            "title": "Elan Pharmacy Inspired Theme",
+            "description": "A minimal, pharmacy-focused Shopify theme structure taking cues from the Elan Pharmacy skeleton: modular sections, clean typography, and conversion-focused layouts.",
+            "tech_stack": "Shopify Liquid, HTML, CSS, JavaScript"
+          }
+        },
+        {
+          "type": "project",
+          "settings": {
+            "title": "Custom Product Layouts",
+            "description": "Flexible product templates with metafield-driven content blocks, custom badges, and optimized add-to-cart experiences.",
+            "tech_stack": "Shopify Liquid, JSON templates, JS enhancements"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
